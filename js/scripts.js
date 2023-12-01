@@ -3,7 +3,7 @@
     che vuole percorrere e l'età del passeggero.
     Sulla base di queste informazioni dovrà calcolare il prezzo totale del viaggio, 
     secondo queste regole:
-    1) il prezzo del biglietto è definito in base ai km (0.21 € al km)
+    1) il prezzo del biglietto è definito in base ai km (0.21 € al km) OK
     2) va applicato uno sconto del 20% per i minorenni
     3) va applicato uno sconto del 40% per gli over 65.
     4) L'output del prezzo finale va messo fuori in forma umana 
@@ -11,13 +11,32 @@
     Questo richiederà un minimo di ricerca. 
 */
 
-/* 1) il prezzo del biglietto è definito in base ai km (0.21 € al km)   OK */
-const userKm = prompt('Quanti kilometri vuoi percorrere?');
+let userKm = prompt('Quanti Kilometri vuoi percorrere?');
 console.log ('userKm', userKm, typeof userKm);
 
-if (userKm == 1){
-    console.log('0.21€')
+
+let price = (userKm * 0.21);
+console.log(price);
+document.getElementById('#price').innerHTML = price;
+
+let userAge = prompt ('Quanti anni hai?');
+console.log ('userAge', userAge, typeof userAge);
+
+let priceDiscountJunior = 20;
+let priceDiscountSenior = 40;
+let finalPrice;
+let discount = 0;
+
+if (userAge < 18){
+    discount = ((price * priceDiscountJunior) / 100);
 }
-if (userKm > 1){
-    console.log(0.21*userKm)
+else if (userAge > 65){    
+    discount = ((price * priceDiscountJunior) / 100);    
 }
+
+finalPrice = price - discount;
+
+price = price.toFixed(2);
+
+document.getElementById('#price').innerHTML = finalPrice;
+
